@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController interfaceStyle="light" id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="1Ua-gr-GSc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo1w" translatesAutoresizingMaskIntoConstraints="NO" id="6yL-E3-Dwb">
+                                <rect key="frame" x="122.66666666666669" y="104" width="130" height="131"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BitCAD Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl3-Eg-y1E">
+                                <rect key="frame" x="62.333333333333329" y="379.66666666666669" width="250.33333333333337" height="53"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="designed" translatesAutoresizingMaskIntoConstraints="NO" id="jQB-x3-PeD">
+                                <rect key="frame" x="130" y="753" width="115" height="9"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="jQB-x3-PeD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4bP-Fr-XuZ"/>
+                            <constraint firstItem="6yL-E3-Dwb" firstAttribute="top" secondItem="tTV-bI-QeP" secondAttribute="top" constant="60" id="6cJ-qX-bq8"/>
+                            <constraint firstItem="1Ua-gr-GSc" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailing" id="9dD-jX-C6y"/>
+                            <constraint firstItem="6yL-E3-Dwb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="HmW-8Q-dWV"/>
+                            <constraint firstItem="1Ua-gr-GSc" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="N2B-gr-zPa"/>
+                            <constraint firstItem="xl3-Eg-y1E" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lvv-Bz-Kad"/>
+                            <constraint firstAttribute="bottom" secondItem="1Ua-gr-GSc" secondAttribute="bottom" id="n2f-xa-2QL"/>
+                            <constraint firstItem="xl3-Eg-y1E" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="oiU-4f-r0v"/>
+                            <constraint firstItem="1Ua-gr-GSc" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="rtB-RX-JIt"/>
+                            <constraint firstItem="tTV-bI-QeP" firstAttribute="bottom" secondItem="jQB-x3-PeD" secondAttribute="bottom" constant="16" id="vE5-We-Fyl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tTV-bI-QeP"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="50.724637681159422" y="374.33035714285711"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bg" width="375" height="812"/>
+        <image name="designed" width="115" height="9"/>
+        <image name="logo1w" width="130" height="131"/>
+    </resources>
+</document>
