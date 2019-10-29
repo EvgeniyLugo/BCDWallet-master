@@ -9,7 +9,6 @@
 import UIKit
 
 class MainTableViewCell: UITableViewCell {
-    @IBOutlet weak var coinLabel: UILabel!
     @IBOutlet weak var coinImage: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
@@ -27,31 +26,15 @@ class MainTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func setParameters(wallet: WalletData, cross: CGFloat = 0, grow: Bool = true) {
-        var coin = "ETH"
-        switch wallet.currency {
-        case .BitCoin:
-            coinLabel.text = "BitCoin"
-            coinImage.image = UIImage(named: "bitcoin_logo")
-            coin = "BTC"
-        case .Ethereum:
-            coinLabel.text = "Ethereum"
-            coinImage.image = UIImage(named: "ethereum_logo")
-        case .Sono:
-            coinLabel.text = "Sono"
-            coinImage.image = UIImage(named: "sono_logo")
-            coin = "SONO"
-        case .Velas:
-            coinLabel.text = "Velas"
-            coinImage.image = UIImage(named: "velas_logo")
-            coin = "VLS"
-        default:
-            coinLabel.text = "Ethereum"
-            coinImage.image = UIImage(named: "ethereum_logo")
-        }
+    func setParameters(wallet: WalletData, cross: Float = 0, grow: Bool = true) {
+        let coinText = wallet.currency.getShortName
+        let imgName = wallet.currency.getName.lowercased() + "_logo"
+        coinImage.image = UIImage(named: imgName)
         addressLabel.text = wallet.address
-        totalAmountLabel.text = "\(wallet.amount) \(coin)"
-        amountLabel.text = ""
+        let amount = wallet.amount == "" ? "0" : wallet.amount
+        amountLabel.text = "\(amount) \(coinText)"
+        let usd = Float(wallet.amount)! * cross
+        totalAmountLabel.text = "$ \(usd)"
         growImage.image = grow ? UIImage(named: "path_up") : UIImage(named: "path_down")
     }
 }

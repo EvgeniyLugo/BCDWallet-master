@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
         catch {
           checkedPassword = ""
         }
-        touchIDButton.isHidden = !touchMe.canEvaluatePolicy() || checkedPassword == "" || touchMe.biometricType() == .faceID
+        touchIDButton.isHidden = !touchMe.canEvaluatePolicy() || checkedPassword == ""// || touchMe.biometricType() == .faceID
         
         self.okButton.isHidden = true
     }
@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
             let touchBool = touchMe.canEvaluatePolicy()
             if touchBool {
                 self.isCorrect = true
-                self.touchIDLoginAction(correct: true, delay: 0.5)
+                self.touchIdPressed(sender: self)
             }
         }
     }
@@ -59,13 +59,14 @@ class LoginViewController: UIViewController {
       return .lightContent
     }
 
-    private func openWallet() {
-        print("Wallet opening")
-        if appDelegate.coordinator.wallets.wallets.count > 0 {
-            UIApplication.setRootView(MainViewController.instantiate(from: .Main))
-        }
-        else {
-            UIApplication.setRootView(WelcomeViewController.instantiate(from: .Main))
+    private func openWallet(_ deadLine: TimeInterval = 0.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + deadLine) {
+            if self.appDelegate.coordinator.wallets.wallets.count > 0 {
+                UIApplication.setRootView(MainViewController.instantiate(from: .Main))
+            }
+            else {
+                UIApplication.setRootView(WelcomeViewController.instantiate(from: .Main))
+            }
         }
     }
 }
@@ -133,19 +134,21 @@ extension LoginViewController {
         }
     }
     
-    @IBAction func touchIdPressed(sender: UIButton) {
+    @IBAction func touchIdPressed(sender: Any) {
         touchMe.authenticateUser() { [weak self] message in
           if let message = message {
-            // if the completion is not nil show an alert
-            let alertView = UIAlertController(title: "Error",
-                                              message: message,
-                                              preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default)
-            alertView.addAction(okAction)
-            self?.present(alertView, animated: true)
-            
-          } else {
-            self?.touchIDLoginAction(correct: true)
+            DispatchQueue.main.async {
+                            // if the completion is not nil show an alert
+                let alertView = UIAlertController(title: "Error",
+                                                  message: message,
+                                                  preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default)
+                alertView.addAction(okAction)
+                self?.present(alertView, animated: true)
+            }
+          }
+          else {
+            self?.openWallet(0.5)
           }
         }
     }

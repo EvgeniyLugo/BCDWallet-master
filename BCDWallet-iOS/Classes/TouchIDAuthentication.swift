@@ -57,8 +57,6 @@ class BiometricIDAuth {
           message = "There was a problem verifying your identity."
         case LAError.userCancel?:
           message = "You pressed cancel."
-        case LAError.userFallback?:
-          message = "You pressed password."
         case LAError.biometryNotAvailable?:
           message = "Face ID/Touch ID is not available."
         case LAError.biometryNotEnrolled?:
@@ -68,7 +66,8 @@ class BiometricIDAuth {
         default:
           message = "Face ID/Touch ID may not be configured"
         }
-        completion(message)                            }
+        completion(message)
+        }
     }
   }
 }

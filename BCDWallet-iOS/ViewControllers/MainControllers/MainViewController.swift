@@ -22,7 +22,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var sendView: UIView!
     @IBOutlet weak var privacyView: UIView!
     
+    @IBOutlet weak var nothingLabel: UILabel!
+
     var wallets = [WalletData]()
+    private var selectedWallets = [WalletData]()
+    
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     private enum State: Int {
@@ -35,7 +39,7 @@ class MainViewController: UIViewController {
     
     private var dropDown: DropDown? = nil
     private var cointType: Coin = .Ethereum
-    private let coinTypes = ["All", "Ethereum", "Velas"]
+    private let coinTypes = Coin.getNames
     private var dropdownSelected = false
     private var selectedCoin: Int = 0
 
@@ -44,6 +48,10 @@ class MainViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         wallets = appDelegate.coordinator.wallets.wallets
+        selectedWallets = wallets
+        nothingLabel.isHidden = true
+
+        self.tableView.reloadData()
         prepareViews()
     }
     
@@ -58,7 +66,6 @@ extension MainViewController {
         sendView.isHidden = true
         privacyView.isHidden = true
         closeButton.isHidden = true
-        animateTableView()
     }
 }
 
@@ -68,7 +75,6 @@ extension MainViewController {
         self.privacyView.isHidden = true
         self.bottomView.isHidden = false
         self.closeButton.isHidden = false
-//        self.bottomView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         self.closeButton.transform = CGAffineTransform(rotationAngle: -90.0 / 180 * .pi)
         self.sendView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         self.sendView.alpha = 0.0
@@ -197,6 +203,25 @@ extension MainViewController {
     @IBAction func doAnyClicked(_ sender: UIButton) {
         let tag = sender.tag
         print(tag)
+        if tag == 0 {
+            //Send
+            UIApplication.setRootView(SendMoneyViewController.instantiate(from: .Actions))
+        }
+        else if tag == 1 {
+            //Scan
+        }
+        else if tag == 2 {
+            //Recieve
+        }
+        else if tag == 3 {
+            //Profile
+        }
+        else if tag == 4 {
+            //Privacy
+        }
+        else {
+            //Security
+        }
     }
     
     @IBAction func addClicked(_ sender: Any) {
@@ -223,12 +248,15 @@ extension MainViewController {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return wallets.count
+        return selectedWallets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableCell", for: indexPath) as! MainTableViewCell
-        cell.setParameters(wallet: wallets[indexPath.row])
+        let wallet = selectedWallets[indexPath.row]
+        let cross = appDelegate.coordinator.crosses[wallet.currency.getIndex]
+        let oldCross = appDelegate.coordinator.oldCrosses[wallet.currency.getIndex]
+        cell.setParameters(wallet: wallet, cross: cross, grow: oldCross < cross)
             
         return cell
     }
@@ -265,7 +293,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             index += 1
         }
     }
-    
 }
 
 extension MainViewController: DropDownDelegate {
@@ -273,6 +300,7 @@ extension MainViewController: DropDownDelegate {
         selectedCoin = selected
         cointType = Coin(rawValue: selectedCoin)!
         coinButton.setTitle(coinTypes[selectedCoin], for: .normal)
+        selectWallets()
         
         let duration: TimeInterval = 0.25
         self.dropDown!.hideDropDown(button: sender, duration: duration)
@@ -282,5 +310,14 @@ extension MainViewController: DropDownDelegate {
         }
     }
     
-    
+    private func selectWallets() {
+        if cointType == .All {
+            selectedWallets = wallets
+        }
+        else {
+            selectedWallets = wallets.filter( {$0.currency == cointType} )
+            nothingLabel.isHidden = selectedWallets.count > 0
+        }
+        animateTableView()
+    }
 }

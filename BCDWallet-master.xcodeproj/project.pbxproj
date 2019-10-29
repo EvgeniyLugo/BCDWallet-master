@@ -37,10 +37,10 @@
 		90C75EEB1AE3583E00F1E749 /* Sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091C7CDB1A50839D002E5351 /* Sign.swift */; };
 		90C75EEC1AE3583E00F1E749 /* Sodium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D80541A4ECCD7000B83F9 /* Sodium.swift */; };
 		90C75EED1AE3583E00F1E749 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D805C1A4F4F72000B83F9 /* Utils.swift */; };
+		9411D78523680D2100F7A9BA /* RestoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9411D78423680D2100F7A9BA /* RestoreViewController.swift */; };
 		9413F083234DF046003BA38A /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F082234DF046003BA38A /* DropDown.swift */; };
 		9413F085234E4BE1003BA38A /* HD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F084234E4BE1003BA38A /* HD.swift */; };
 		9413F087234E5029003BA38A /* ByteArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F086234E5029003BA38A /* ByteArrayExtension.swift */; };
-		942709E82366C15400C6DFB3 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 942709E62366C15400C6DFB3 /* CryptoSwift.framework */; };
 		942709E92366C1D400C6DFB3 /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C75E941AE3571900F1E749 /* Sodium.framework */; };
 		942709EA2366C1D400C6DFB3 /* Sodium.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 90C75E941AE3571900F1E749 /* Sodium.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		942709EB2366C1F700C6DFB3 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 942709E62366C15400C6DFB3 /* CryptoSwift.framework */; };
@@ -61,6 +61,7 @@
 		942C655423545389000CAE51 /* TxInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C655223545389000CAE51 /* TxInfo.swift */; };
 		942C65562354561E000CAE51 /* ValidateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C65552354561E000CAE51 /* ValidateResponse.swift */; };
 		942C65572354561E000CAE51 /* ValidateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C65552354561E000CAE51 /* ValidateResponse.swift */; };
+		9433D64123677126008D80FD /* RoundedCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9433D64023677126008D80FD /* RoundedCornersButton.swift */; };
 		9453284D234D0AA300B07C13 /* CreatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9453284C234D0AA300B07C13 /* CreatePasswordViewController.swift */; };
 		9453284F234D0AB300B07C13 /* CreateSeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9453284E234D0AB300B07C13 /* CreateSeedViewController.swift */; };
 		94532853234D0AC900B07C13 /* SendMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94532850234D0AC700B07C13 /* SendMoneyViewController.swift */; };
@@ -126,6 +127,7 @@
 		94CF3B672347A16A0085479B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CF3B662347A16A0085479B /* UIViewController.swift */; };
 		94CF3B692347A1F80085479B /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CF3B682347A1F80085479B /* AppStoryboard.swift */; };
 		94CF3B6A2347AB060085479B /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94CF3B6C2347AB060085479B /* Start.storyboard */; };
+		94D8A9202368B060002CF217 /* CrossManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8A91F2368B060002CF217 /* CrossManager.swift */; };
 		94D90C6C234D0135001BC2A0 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D90C6B234D0135001BC2A0 /* QRScannerViewController.swift */; };
 		94D90C78234D063A001BC2A0 /* Actions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94D90C77234D063A001BC2A0 /* Actions.storyboard */; };
 		94D90C7A234D0679001BC2A0 /* Utils.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94D90C79234D0679001BC2A0 /* Utils.storyboard */; };
@@ -264,6 +266,7 @@
 		7D6373E11E7B5E0800F04E72 /* KeyExchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyExchange.swift; sourceTree = "<group>"; };
 		90C75E941AE3571900F1E749 /* Sodium.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Sodium.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C75EAD1AE357CB00F1E749 /* libsodium-osx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libsodium-osx.a"; sourceTree = "<group>"; };
+		9411D78423680D2100F7A9BA /* RestoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreViewController.swift; sourceTree = "<group>"; };
 		9413F082234DF046003BA38A /* DropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
 		9413F084234E4BE1003BA38A /* HD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HD.swift; sourceTree = "<group>"; };
 		9413F086234E5029003BA38A /* ByteArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByteArrayExtension.swift; sourceTree = "<group>"; };
@@ -276,6 +279,7 @@
 		942C654F23545060000CAE51 /* NodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
 		942C655223545389000CAE51 /* TxInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxInfo.swift; sourceTree = "<group>"; };
 		942C65552354561E000CAE51 /* ValidateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateResponse.swift; sourceTree = "<group>"; };
+		9433D64023677126008D80FD /* RoundedCornersButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersButton.swift; sourceTree = "<group>"; };
 		9453284C234D0AA300B07C13 /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
 		9453284E234D0AB300B07C13 /* CreateSeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSeedViewController.swift; sourceTree = "<group>"; };
 		94532850234D0AC700B07C13 /* SendMoneyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMoneyViewController.swift; sourceTree = "<group>"; };
@@ -327,6 +331,7 @@
 		94CF3B662347A16A0085479B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		94CF3B682347A1F80085479B /* AppStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
 		94CF3B6B2347AB060085479B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Start.storyboard; sourceTree = "<group>"; };
+		94D8A91F2368B060002CF217 /* CrossManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossManager.swift; sourceTree = "<group>"; };
 		94D90C6B234D0135001BC2A0 /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		94D90C77234D063A001BC2A0 /* Actions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Actions.storyboard; sourceTree = "<group>"; };
 		94D90C79234D0679001BC2A0 /* Utils.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Utils.storyboard; sourceTree = "<group>"; };
@@ -377,7 +382,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				94BD1D532348771800DC0F60 /* Sodium.framework in Frameworks */,
-				942709E82366C15400C6DFB3 /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +566,7 @@
 				9453284E234D0AB300B07C13 /* CreateSeedViewController.swift */,
 				94532851234D0AC800B07C13 /* ImportViewController.swift */,
 				94532852234D0AC900B07C13 /* RecieveMoneyViewController.swift */,
+				9411D78423680D2100F7A9BA /* RestoreViewController.swift */,
 				94532850234D0AC700B07C13 /* SendMoneyViewController.swift */,
 			);
 			path = ActionControllers;
@@ -629,6 +634,7 @@
 		9489BA70234985B800C648DD /* WalletManagers */ = {
 			isa = PBXGroup;
 			children = (
+				94D8A91F2368B060002CF217 /* CrossManager.swift */,
 				9489BA71234985E900C648DD /* EthereumManager.swift */,
 			);
 			path = WalletManagers;
@@ -761,6 +767,7 @@
 		94CF3B632347A0C40085479B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9433D64023677126008D80FD /* RoundedCornersButton.swift */,
 				94CF3B642347A1040085479B /* UIApplication.swift */,
 				94CF3B662347A16A0085479B /* UIViewController.swift */,
 			);
@@ -1126,6 +1133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94D8A9202368B060002CF217 /* CrossManager.swift in Sources */,
 				94CF3B652347A1040085479B /* UIApplication.swift in Sources */,
 				948E94CC23471C8400BE96C5 /* LoginViewController.swift in Sources */,
 				94532855234D0AC900B07C13 /* RecieveMoneyViewController.swift in Sources */,
@@ -1133,6 +1141,7 @@
 				948E94C823471C8400BE96C5 /* AppDelegate.swift in Sources */,
 				942C653D23538735000CAE51 /* Transaction.swift in Sources */,
 				942C65572354561E000CAE51 /* ValidateResponse.swift in Sources */,
+				9433D64123677126008D80FD /* RoundedCornersButton.swift in Sources */,
 				9489BA7C23498DB600C648DD /* SettingsViewController.swift in Sources */,
 				9477E17523474E84001D4F8F /* WalletData.swift in Sources */,
 				9477E17123473AD5001D4F8F /* User.swift in Sources */,
@@ -1162,6 +1171,7 @@
 				9482D492235312660026E0A2 /* RIPEMD160.swift in Sources */,
 				9413F085234E4BE1003BA38A /* HD.swift in Sources */,
 				942C654923544B61000CAE51 /* Balance.swift in Sources */,
+				9411D78523680D2100F7A9BA /* RestoreViewController.swift in Sources */,
 				94CF3B692347A1F80085479B /* AppStoryboard.swift in Sources */,
 				9413F087234E5029003BA38A /* ByteArrayExtension.swift in Sources */,
 				94CF3B62234798E70085479B /* StartCollectionViewCell.swift in Sources */,

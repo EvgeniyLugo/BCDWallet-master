@@ -17,8 +17,8 @@ public class WalletData: NSObject {
     public var address: String
     public var privateKey: String
     public var password: String
-    public var encryptedJson: String
-    public var amount: Decimal
+//    public var encryptedJson: String
+    public var amount: String
     public var currency: Coin
     
     public override init() {
@@ -26,8 +26,8 @@ public class WalletData: NSObject {
         address = ""
         privateKey = ""
         password = ""
-        encryptedJson = ""
-        amount = 0
+//        encryptedJson = ""
+        amount = ""
         currency = .Ethereum
         
         super.init()
@@ -40,9 +40,10 @@ public class WalletData: NSObject {
         dictToReturn.setValue(address, forKey: "address")
         dictToReturn.setValue(privateKey, forKey: "private_key")
         dictToReturn.setValue(password, forKey: "password")
-        dictToReturn.setValue(encryptedJson, forKey: "encrypted")
+//        dictToReturn.setValue(encryptedJson, forKey: "encrypted")
         dictToReturn.setValue(amount, forKey: "amount")
-        dictToReturn.setValue(currency.rawValue, forKey: "currency")
+        let currValaue = currency.getName
+        dictToReturn.setValue(currValaue, forKey: "currency")
 
         return dictToReturn
     }
@@ -62,14 +63,14 @@ public class WalletData: NSObject {
         if  let value = dictionary["password"] as? String {
             wd.password = value
         }
-        if  let value = dictionary["encrypted"] as? String {
-            wd.encryptedJson = value
-        }
-        if  let value = dictionary["amount"] as? Decimal {
+//        if  let value = dictionary["encrypted"] as? String {
+//            wd.encryptedJson = value
+//        }
+        if  let value = dictionary["amount"] as? String {
             wd.amount = value
         }
-        if  let value = dictionary["currency"] as? Int {
-            wd.currency = Coin(rawValue: value)!
+        if  let value = dictionary["currency"] as? String {
+            wd.currency = value.getCoinByName()
         }
 
         return wd

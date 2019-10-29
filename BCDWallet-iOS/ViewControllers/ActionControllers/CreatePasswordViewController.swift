@@ -20,7 +20,7 @@ class CreatePasswordViewController: UIViewController {
     private var dropDown: DropDown? = nil
     private var cointType: Coin = .Ethereum
 
-    private let coinTypes = ["Ethereum", "Velas"]
+    private let coinTypes = Coin.getCoinNames
     private var dropdownSelected = false
     private var selectedCoin: Int = 0
     
@@ -40,7 +40,8 @@ class CreatePasswordViewController: UIViewController {
         else {
             let duration: TimeInterval = 0.5
             self.dropDown!.hideDropDown(button: sender as! UIButton, duration: duration)
-            DispatchQueue.main.asyncAfter(deadline: .now() + duration + 0.5) {                self.dropDown = nil
+            DispatchQueue.main.asyncAfter(deadline: .now() + duration + 0.5) {
+                self.dropDown = nil
                 self.dropdownSelected = false
             }
         }
@@ -59,7 +60,8 @@ extension CreatePasswordViewController: DropDownDelegate {
         cointType = Coin(rawValue: selectedCoin)!
         let duration: TimeInterval = 0.5
         self.dropDown!.hideDropDown(button: sender, duration: duration)
-        DispatchQueue.main.asyncAfter(deadline: .now() + duration + 0.5) {                self.dropDown = nil
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration + 0.5) {
+            self.dropDown = nil
             self.dropdownSelected = false
         }
     }
