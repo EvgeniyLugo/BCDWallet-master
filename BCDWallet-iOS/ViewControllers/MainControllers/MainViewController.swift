@@ -10,22 +10,30 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var btcLabel: UILabel!
+    @IBOutlet weak var ethLabel: UILabel!
+    @IBOutlet weak var sonoLabel: UILabel!
+    @IBOutlet weak var vlsLabel: UILabel!
     @IBOutlet weak var bgGraphImageView: UIImageView!
     @IBOutlet weak var downView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var bitButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var coinButton: UIButton!
-    
+
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var sendView: UIView!
     @IBOutlet weak var privacyView: UIView!
-    
+    @IBOutlet weak var othersView: UIView!
+
     @IBOutlet weak var nothingLabel: UILabel!
 
     var wallets = [WalletData]()
+//    var needCheckBalance = false
+    
     private var selectedWallets = [WalletData]()
+    
+    private var walletToShow: WalletData?
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -47,25 +55,63 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        wallets = appDelegate.coordinator.wallets.wallets
-        selectedWallets = wallets
-        nothingLabel.isHidden = true
-
-        self.tableView.reloadData()
         prepareViews()
+//        if needCheckBalance {
+//            appDelegate.coordinator.checkBalance()
+//        }
+        prepareWallet()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
       return .lightContent
     }
-
 }
 
 extension MainViewController {
     private func prepareViews() {
         sendView.isHidden = true
         privacyView.isHidden = true
+        othersView.isHidden = true
         closeButton.isHidden = true
+        nothingLabel.isHidden = true
+    }
+}
+
+extension MainViewController {
+    func prepareWallet() {
+        wallets = appDelegate.coordinator.wallets.wallets
+        selectedWallets = wallets
+        self.animateTableView()
+//        var btc: Float = 0.0
+//        var eth: Float = 0.0
+//        var sono: Float = 0.0
+//        var vls: Float = 0.0
+//        for wallet in wallets {
+//            if wallet.coinType == .BitCoin {
+//                if wallet.amount != "" {
+//                    btc += Float(wallet.amount)!
+//                }
+//            }
+//            else if wallet.coinType == .Ethereum {
+//                if wallet.amount != "" {
+//                    eth += Float(wallet.amount)!
+//                }
+//            }
+//            else if wallet.coinType == .Sono {
+//                if wallet.amount != "" {
+//                    sono += Float(wallet.amount)!
+//                }
+//            }
+//            else if wallet.coinType == .Velas {
+//                if wallet.amount != "" {
+//                    vls += Float(wallet.amount)!
+//                }
+//            }
+//        }
+//        btcLabel.text =  "\(btc) BTC"
+//        ethLabel.text =  "\(eth) ETH"
+//        sonoLabel.text = "\(sono) SONO"
+//        vlsLabel.text =  "\(vls) VLS"
     }
 }
 
@@ -178,6 +224,8 @@ extension MainViewController {
 //Actions
 extension MainViewController {
     @IBAction func bitClicked(_ sender: Any) {
+//        appDelegate.coordinator.ethereumManager.sendEther(value: "0.05", from: wallets[4], to: wallets[2])
+//        animateTableView()
     }
     
     @IBAction func closeClicked(_ sender: Any) {
@@ -202,10 +250,12 @@ extension MainViewController {
     
     @IBAction func doAnyClicked(_ sender: UIButton) {
         let tag = sender.tag
-        print(tag)
+        closeClicked(self)
         if tag == 0 {
             //Send
-            UIApplication.setRootView(SendMoneyViewController.instantiate(from: .Actions))
+            let vc = SendMoneyViewController.instantiate(from: .Actions)
+            vc.controller = self
+            UIApplication.setRootView(vc)
         }
         else if tag == 1 {
             //Scan
@@ -225,12 +275,15 @@ extension MainViewController {
     }
     
     @IBAction func addClicked(_ sender: Any) {
+        let vc = CreatePasswordViewController.instantiate(from: .Actions)
+        vc.controller = self
+        UIApplication.setRootView(vc)
     }
     
     @IBAction func coinClicked(_ sender: Any) {
         if (self.dropDown == nil) {
             self.resignFirstResponder()
-            self.dropDown = DropDown(button: sender as! UIButton, height: 200, array: coinTypes, downImg: downView)
+            self.dropDown = DropDown(button: sender as! UIButton, array: coinTypes, downImg: downView)
             self.dropDown!.dropDownDelegate = self
             self.dropdownSelected = true
         }
@@ -243,7 +296,6 @@ extension MainViewController {
             }
         }
     }
-
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -254,15 +306,29 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableCell", for: indexPath) as! MainTableViewCell
         let wallet = selectedWallets[indexPath.row]
-        let cross = appDelegate.coordinator.crosses[wallet.currency.getIndex]
-        let oldCross = appDelegate.coordinator.oldCrosses[wallet.currency.getIndex]
+        let cross = appDelegate.coordinator.crosses[wallet.coinType.getIndex]
+        let oldCross = appDelegate.coordinator.oldCrosses[wallet.coinType.getIndex]
         cell.setParameters(wallet: wallet, cross: cross, grow: oldCross < cross)
+        cell.progressView.isHidden = false
+        print("Current before: \(indexPath.row), amount: \(wallet.amount)")
+        appDelegate.coordinator.getBalance(wallet: wallet, completion: { (amount) in
+            DispatchQueue.main.async {
+                cell.progressView.isHidden = true
+                wallet.amount = amount
+                cell.refreshAmount(wallet: wallet, cross: cross)
+                print("Current after: \(indexPath.row), amount: \(wallet.amount)")
+            }
+        })
             
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        walletToShow = selectedWallets[indexPath.row]
+        let vc = DetailViewController.instantiate(from: .Main)
+        vc.walletToShow = walletToShow!
+        UIApplication.setRootView(vc)
     }
 
     ///Анимация таблицы
@@ -315,7 +381,7 @@ extension MainViewController: DropDownDelegate {
             selectedWallets = wallets
         }
         else {
-            selectedWallets = wallets.filter( {$0.currency == cointType} )
+            selectedWallets = wallets.filter( {$0.coinType == cointType} )
             nothingLabel.isHidden = selectedWallets.count > 0
         }
         animateTableView()

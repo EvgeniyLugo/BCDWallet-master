@@ -23,7 +23,7 @@ public class Client: NSObject {
     }
 }
 
-//Mark: - Client
+//MARK: - Client
 extension Client {
     public func getInfo(completion: @escaping (NodeInfo?, String?) -> ()) -> Void {
         let urlString = "\(baseUrl)/api/v1/info"
@@ -56,7 +56,7 @@ extension Client {
     }
 }
 
-//Mark: - Block
+//MARK: - Block
 extension Client {
     public func getByHash(hash: String, completion: @escaping (BlockDto?, String?) -> ()) -> Void {
         let urlString = "\(baseUrl)/api/v1/blocks/\(hash)"
@@ -88,7 +88,7 @@ extension Client {
     }
 }
 
-//Mark: - Wallet
+//MARK: - Wallet
 extension Client {
     public func getBalance(address: String, completion: @escaping (Balance?, String?) -> ()) -> Void {
         let urlString = "\(baseUrl)/api/v1/wallet/balance/\(address)"
@@ -154,7 +154,7 @@ extension Client {
     }
 }
 
-//Mark: - Tx
+//MARK: - Tx
 extension Client {
     public func getHashListByAddress(address: String, completion: @escaping ([String]?, String?) -> ()) -> Void {
         let urlString = "\(baseUrl)/api/v1/wallet/txs/\(address)"

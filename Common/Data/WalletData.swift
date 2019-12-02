@@ -13,24 +13,39 @@ import Cocoa
 #endif
 
 public class WalletData: NSObject {
+    ///Name of wallet
     public var walletName: String
+    ///Public address
     public var address: String
-    public var privateKey: String
+    ///Mnemonic string / seed
+    public var mnemonic: String
+    ///Password
     public var password: String
-//    public var encryptedJson: String
+    ///Balance
     public var amount: String
-    public var currency: Coin
+    ///Type of coin
+    public var coinType: Coin
     
     public override init() {
         walletName = ""
         address = ""
-        privateKey = ""
+        mnemonic = ""
         password = ""
-//        encryptedJson = ""
         amount = ""
-        currency = .Ethereum
+        coinType = .Ethereum
         
         super.init()
+    }
+    
+    public convenience init(address: String, mnemonic: String, walletName: String, password: String, coinType: Coin) {
+        self.init()
+        
+        self.address = address
+        self.mnemonic = mnemonic
+        self.walletName = walletName
+        self.password = password
+        self.coinType = coinType
+        self.amount = ""
     }
     
     public func convertToDictionary() -> NSDictionary {
@@ -38,12 +53,11 @@ public class WalletData: NSObject {
         
         dictToReturn.setValue(walletName, forKey: "wallet_name")
         dictToReturn.setValue(address, forKey: "address")
-        dictToReturn.setValue(privateKey, forKey: "private_key")
+        dictToReturn.setValue(mnemonic, forKey: "mnemonic")
         dictToReturn.setValue(password, forKey: "password")
-//        dictToReturn.setValue(encryptedJson, forKey: "encrypted")
         dictToReturn.setValue(amount, forKey: "amount")
-        let currValaue = currency.getName
-        dictToReturn.setValue(currValaue, forKey: "currency")
+        let currValaue = coinType.getName
+        dictToReturn.setValue(currValaue, forKey: "coinType")
 
         return dictToReturn
     }
@@ -57,20 +71,17 @@ public class WalletData: NSObject {
         if  let value = dictionary["address"] as? String {
             wd.address = value
         }
-        if  let value = dictionary["private_key"] as? String {
-            wd.privateKey = value
+        if  let value = dictionary["mnemonic"] as? String {
+            wd.mnemonic = value
         }
         if  let value = dictionary["password"] as? String {
             wd.password = value
         }
-//        if  let value = dictionary["encrypted"] as? String {
-//            wd.encryptedJson = value
-//        }
         if  let value = dictionary["amount"] as? String {
             wd.amount = value
         }
-        if  let value = dictionary["currency"] as? String {
-            wd.currency = value.getCoinByName()
+        if  let value = dictionary["coinType"] as? String {
+            wd.coinType = value.getCoinByName()
         }
 
         return wd

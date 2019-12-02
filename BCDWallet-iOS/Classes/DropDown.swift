@@ -18,6 +18,7 @@ class DropDown: UIView, UITableViewDelegate, UITableViewDataSource {
     var view: UIView!
     var buttonSender: UIButton!
     var downImage: UIImageView!
+    private var cellHeight: CGFloat = 50
     
     public weak var dropDownDelegate: DropDownDelegate?
     
@@ -30,7 +31,7 @@ class DropDown: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleWidth]
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.isOpaque = false
-        tableView.backgroundColor = UIColor.init(red: 0.08, green: 0.07, blue: 0.16, alpha: 0.5)
+        tableView.backgroundColor = UIColor.init(red: 0.08, green: 0.07, blue: 0.16, alpha: 0.8)
         tableView.backgroundView = nil
         tableView.bounces = false
         
@@ -45,7 +46,7 @@ class DropDown: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(coder: aDecoder)
     }
     
-    convenience init(button: UIButton, height: CGFloat, array: [String], downImg: UIImageView) {
+    convenience init(button: UIButton, array: [String], downImg: UIImageView) {
         let x = button.frame.origin.x
         let sx = button.superview!.frame.origin.x
 //        let rect = CGRect(x: sx + x, y: button.superview!.frame.origin.y + button.frame.size.height,
@@ -53,18 +54,19 @@ class DropDown: UIView, UITableViewDelegate, UITableViewDataSource {
         self.init(frame: button.superview!.superview!.frame)
         self.buttonSender = button
         self.downImage = downImg
-
+        let number: CGFloat = array.count > 3 ? 3 : CGFloat(array.count)
+        let height = cellHeight * (number + 0.5)
         self.tableView.layer.masksToBounds = false
         self.tableView.layer.cornerRadius = 8
         self.tableView.layer.shadowRadius = 5
         self.tableView.layer.shadowOpacity = 0.5
-        self.tableView.backgroundColor = UIColor.init(red: 0.08, green: 0.07, blue: 0.16, alpha: 0.5)
+        self.tableView.backgroundColor = UIColor.init(red: 0.08, green: 0.07, blue: 0.16, alpha: 0.8)
         self.tableView.layer.shadowOffset = CGSize(width: 5, height: 5.0)
         
-        self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
         
         self.tableView.frame = CGRect(x: sx + x,
-                                      y: button.superview!.frame.origin.y + button.frame.size.height,
+                                      y: button.superview!.frame.origin.y + button.frame.size.height + 4,
                                       width: button.frame.size.width,
                                       height: 0)
         
@@ -107,14 +109,14 @@ class DropDown: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
+        return cellHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.backgroundColor = UIColor.init(red: 0.08, green: 0.07, blue: 0.16, alpha: 0.5)
+        cell.backgroundColor = UIColor.init(red: 0.08, green: 0.07, blue: 0.16, alpha: 0.8)
         cell.textLabel?.font = UIFont(name: "Roboto-Medium", size: 18)
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.textAlignment = .center

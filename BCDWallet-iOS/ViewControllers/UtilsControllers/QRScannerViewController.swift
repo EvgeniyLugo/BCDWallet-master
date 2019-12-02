@@ -53,21 +53,6 @@ class QRScannerViewController: UIViewController {
         return .portrait
     }
 
-    func generateQRCode(from string: String) -> UIImage? {
-        let data = string.data(using: String.Encoding.ascii)
-
-        if let filter = CIFilter(name: "CIQRCodeGenerator") {
-            filter.setValue(data, forKey: "inputMessage")
-            let transform = CGAffineTransform(scaleX: 3, y: 3)
-
-            if let output = filter.outputImage?.transformed(by: transform) {
-                return UIImage(ciImage: output)
-            }
-        }
-
-        return nil
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         okButton.isHidden = true
@@ -130,12 +115,6 @@ extension QRScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if supportedCodeTypes.contains(metadataObj.type) {
-//            // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
-//            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-
-//            // read from clipboard
-//            let content = UIPasteboard.general.string
-            
             if metadataObj.stringValue != nil {
                 messageLabel.text = metadataObj.stringValue
                 scannedText = metadataObj.stringValue!

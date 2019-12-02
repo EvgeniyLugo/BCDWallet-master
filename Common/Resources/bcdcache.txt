@@ -1,50 +1,13 @@
 {
-    "name": "Wallets",
-    "wallets": [
-        {
-            "name": "Account 1",
-            "amount": "1.77832",
-            "address": "0x59a32F2C28f3144db3ec539645456A31E54813a1",
-            "cachedPassword": "123",
-            "currency": "Ethereum",
-            "encryptedJson": "{\"crypto\":{\"cipher\":\"aes-128-ctr\",\"ciphertext\":\"17f680910cd3bdef945a4c2871ebab3cd97b4dfe394fc3addecc42933ff1b85c\",\"cipherparams\":{\"iv\":\"123f7302c99b48ca44221a14609ea9c3\"},\"kdf\":\"scrypt\",\"mac\":\"1d6a9fc4a37bf784f45895c802476f22a886122da327d04fef2ee39ddc553f91\",\"kdfparams\":{\"n\":262144,\"r\":1,\"p\":8,\"dklen\":32,\"salt\":\"634d380c2b9326a5ee557b7a373f23504cd995789ed3b233fea6ff9fb514a36f\"}},\"id\":\"15497cb4-7c2d-484e-9736-6b06c78e043d\",\"address\":\"0x59a32F2C28f3144db3ec539645456A31E54813a1\",\"version\":3}",
-            "privateKey": "0x3146edbe775047da780075b23d8c231f601546d2b374285b462065dd63a5fb76"
-        },
-        {
-            "name": "Account 2",
-            "amount": "1000",
-            "address": "VLW44gnSP6DbraGmBnhMYde1izikvoiXQxr",
-            "cachedPassword": "123",
-            "currency": "Velas",
-            "encryptedJson": "{\"crypto\":{\"cipher\":\"aes-128-ctr\",\"ciphertext\":\"e86241e166d014f6c2cd077a71c6f44fe58d93ab9e0ce7e7b7edf881a07509e0\",\"cipherparams\":{\"iv\":\"6762bc71efef58c6e3ec46a407e25688\"},\"kdf\":\"scrypt\",\"mac\":\"2cb0a4da05ac53d5154c47c5f75a7e764d472ebfe83510b5b3cfcbf4395a0b76\",\"kdfparams\":{\"n\":262144,\"r\":1,\"p\":8,\"dklen\":32,\"salt\":\"2f8fce0c779b845a0257d95400ad57968c8c698878602f73ec726dbc536ae170\"}},\"id\":\"9233e9d5-94a4-48ba-9c77-015d25b53ec9\",\"address\":\"0x14A62cA53114248D7882Fdffa13649fC79Fbf43f\",\"version\":3}",
-            "privateKey": "1403ca30b6cd6a852c4149954bae0422ca28f32d6ecd67a79c1ff9fdee52d3b5e7f371ff8a634e9ab89019dcf8807533d8d4101bc3253f0041519130ff908123"
-        },
-        {
-            "name": "Account 3",
-            "amount": "0.02",
-            "address": "0x14A62cA53114248D7882Fdffa13649fC79Fbf43f",
-            "cachedPassword": "123",
-            "currency": "Ethereum",
-            "encryptedJson": "{\"crypto\":{\"cipher\":\"aes-128-ctr\",\"ciphertext\":\"e86241e166d014f6c2cd077a71c6f44fe58d93ab9e0ce7e7b7edf881a07509e0\",\"cipherparams\":{\"iv\":\"6762bc71efef58c6e3ec46a407e25688\"},\"kdf\":\"scrypt\",\"mac\":\"2cb0a4da05ac53d5154c47c5f75a7e764d472ebfe83510b5b3cfcbf4395a0b76\",\"kdfparams\":{\"n\":262144,\"r\":1,\"p\":8,\"dklen\":32,\"salt\":\"2f8fce0c779b845a0257d95400ad57968c8c698878602f73ec726dbc536ae170\"}},\"id\":\"9233e9d5-94a4-48ba-9c77-015d25b53ec9\",\"address\":\"0x14A62cA53114248D7882Fdffa13649fC79Fbf43f\",\"version\":3}",
-            "privateKey": "0x680fd12caec503a89ea916e00eb1ec2c679071c01165f56b86f03c1cab3a9dc0"
-        },
-        {
-            "name": "Account 4",
-            "amount": "1000",
-            "address": "VLhkdYXiUSYxRq6W33tqAiYQtbF8R1g6kV8",
-            "cachedPassword": "123",
-            "currency": "Velas",
-            "encryptedJson": "{\"crypto\":{\"cipher\":\"aes-128-ctr\",\"ciphertext\":\"e86241e166d014f6c2cd077a71c6f44fe58d93ab9e0ce7e7b7edf881a07509e0\",\"cipherparams\":{\"iv\":\"6762bc71efef58c6e3ec46a407e25688\"},\"kdf\":\"scrypt\",\"mac\":\"2cb0a4da05ac53d5154c47c5f75a7e764d472ebfe83510b5b3cfcbf4395a0b76\",\"kdfparams\":{\"n\":262144,\"r\":1,\"p\":8,\"dklen\":32,\"salt\":\"2f8fce0c779b845a0257d95400ad57968c8c698878602f73ec726dbc536ae170\"}},\"id\":\"9233e9d5-94a4-48ba-9c77-015d25b53ec9\",\"address\":\"0x14A62cA53114248D7882Fdffa13649fC79Fbf43f\",\"version\":3}",
-            "privateKey": "e02f4f6f4f8c649481de075aa7d15ecd40403b240aa5824d868d0a0025e64882b928945774d812fe08d412125eb037c7e3aa71238939091a8f41c6dec2d82627"
-        },
-        {
-            "name": "Account 5",
-            "amount": "0.2",
-            "address": "0x98Ea8F40589ae1182929898e41502cAf595f0981",
-            "cachedPassword": "123",
-            "currency": "Ethereum",
-            "encryptedJson": "{\"crypto\":{\"cipher\":\"aes-128-ctr\",\"ciphertext\":\"9d60a23cabe36372302e41eefe45bfb315f220c860d96076e3e1d39a044f7fab\",\"cipherparams\":{\"iv\":\"c4fef420c5653b1e934180db8c654a24\"},\"kdf\":\"scrypt\",\"mac\":\"2483957d4df8015b82f54c61e90716d96e15b8da14efc74427728353b7a37a44\",\"kdfparams\":{\"n\":262144,\"r\":1,\"p\":8,\"dklen\":32,\"salt\":\"70e711c851d8951339d60fd9e63dae2f3b21dbf49e90cfc28a296259a4d94f82\"}},\"id\":\"e4df8802-f6b0-42a1-91ea-433a75c5c00b\",\"address\":\"0x98Ea8F40589ae1182929898e41502cAf595f0981\",\"version\":3}",
-            "privateKey": "0x12e72120cb6667fc25c1813f42c6b2716d456c5a1519037c8b1fcca661d0839e"
-        }
-    ]
+  "name" : "Wallets",
+  "wallets" : [
+    {
+      "wallet_name" : "Velas main",
+      "mnemonic" : "VLSWWh9SCcutqB9APLSxyUyfzeuvG8XXTB1",
+      "password" : "qwe",
+      "amount" : "11000",
+      "coinType" : "Velas",
+      "address" : "89d5bd2d31889df63cb1c895e4c6f16772e7b06a8c71228bb59d4c9a0c434fc1f6e586d5d051065a580969d15f48f88251ed24b9c77422410bc39a0e7247e53a"
+    }
+  ]
 }

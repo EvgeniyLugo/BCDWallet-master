@@ -9,6 +9,9 @@
 import UIKit
 
 class RestoreViewController: UIViewController {
+    
+    ///Controller to return
+    var controller: UIViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,5 +29,12 @@ class RestoreViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func cancelClicked(_ sender: Any) {
+        UIApplication.setRootView(controller)
+    }
+
+    @IBAction func restoreWalletClicked(_ sender: Any) {
+    }
 
 }

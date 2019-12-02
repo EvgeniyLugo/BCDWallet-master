@@ -138,7 +138,7 @@ extension HD {
         return HD(publicKey: public_key, privateKey: private_key)
     }
     
-    public func toWallet() -> Wallet {
-        return Wallet(publickKey: publicKey)
+    public func toWallet() -> VelasWallet {
+        return VelasWallet(publickKey: publicKey)
     }
 }

@@ -31,8 +31,8 @@ class ViewController: NSViewController {
         //        // 1. Wallet from private address
         //        createWallet(pk: myPk)
         //        // 2. Wallet from seed
-        //        createWalletFromSeed(seed: seed, deriveIndex: 0)
-                
+//                createWalletFromSeed(seed: seed, deriveIndex: 0)
+//                createWalletFromBase58(base58: myBase58)
                 
 //                // Insert code here to initialize your application
 //                let keys = HD.fromPrivateKey(pk)
@@ -43,7 +43,7 @@ class ViewController: NSViewController {
 //                let seWallet = seKeys?.toWallet()
 
         //        // 3. Get info
-        //        getInfo()
+//                getInfo()
 
 //                // 4. Get balance
 //                getWalletBalance(seWallet!)
@@ -66,8 +66,8 @@ class ViewController: NSViewController {
         //        //10. Validate Tx
         //        validateTx(wallet!, keys!, myBase58)
         //
-        //        //11. Send
-        //        sendTx(wallet!, keys!, seBase58)
+                //11. Send
+//                sendTx(wallet!, keys!, seBase58)
         
     }
 
@@ -108,6 +108,10 @@ extension ViewController {
         print("2. Base address from seed: \(wallet.base58Address), success = \(success)")
     }
 
+    private func createWalletFromBase58(base58: String) {
+        let keys = HD.importBase58Wif(base58)
+        print("Wallet from base58: \(String(describing: keys?.PrivateKey.toHex()))")
+    }
 }
 
 
@@ -121,7 +125,7 @@ extension ViewController {
         })
     }
     
-    private func getWalletBalance(_ wallet: Wallet) {
+    private func getWalletBalance(_ wallet: VelasWallet) {
         client.getBalance(address: wallet.base58Address, completion: { (data, errorString) -> Void in
             if let balance = data {
                 print("4. Get balance, amount = \(balance.amount)")
@@ -132,7 +136,7 @@ extension ViewController {
         })
     }
     
-    private func getUnspents(_ wallet: Wallet) {
+    private func getUnspents(_ wallet: VelasWallet) {
         client.getUnspents(address: wallet.base58Address, completion: { (data, errorString) -> Void in
             if let unspents = data {
                 print("5. Get unspents, hash: \(unspents[0].hash),\nbalance = \(unspents[0].value), \nindex: \(unspents[0].index)")
@@ -140,7 +144,7 @@ extension ViewController {
         })
     }
     
-    private func getHashesByWalletAddress(_ wallet: Wallet) {
+    private func getHashesByWalletAddress(_ wallet: VelasWallet) {
         client.getHashListByAddress(address: wallet.base58Address, completion: { (data, errorString) -> Void in
             if let hashes = data {
                 print("6. Get hashes by address, hash: \(hashes[0])")
@@ -173,7 +177,7 @@ extension ViewController {
         })
     }
     
-    private func validateTx(_ wallet: Wallet, _ keys: HD, _ addressTo: String) {
+    private func validateTx(_ wallet: VelasWallet, _ keys: HD, _ addressTo: String) {
         client.getUnspents(address: wallet.base58Address, completion: { (data, errorString) -> Void in
             if let unspents = data {
                 let tx = Transaction(unspents, 1000, keys, wallet.base58Address, addressTo, 1000000)
@@ -184,10 +188,10 @@ extension ViewController {
         })
     }
     
-    private func sendTx(_ wallet: Wallet, _ keys: HD, _ addressTo: String) {
+    private func sendTx(_ wallet: VelasWallet, _ keys: HD, _ addressTo: String) {
         client.getUnspents(address: wallet.base58Address, completion: { (data, errorString) -> Void in
             if let unspents = data {
-                let tx = Transaction(unspents, 1000, keys, wallet.base58Address, addressTo, 1000000)
+                let tx = Transaction(unspents, 10000, keys, wallet.base58Address, addressTo, 1000000)
                 self.client.publish(tx: tx, completion: { (result, errorString) -> Void in
                     print(result)
                 })

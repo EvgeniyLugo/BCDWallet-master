@@ -9,6 +9,9 @@
 import UIKit
 
 class CreateSeedViewController: UIViewController {
+    
+    ///Controller to return
+    var controller: UIViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,5 +29,12 @@ class CreateSeedViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+        
+    @IBAction func okPressed(sender: UIButton) {
+    }
+        
+    @IBAction func closePressed(sender: UIButton) {
+        UIApplication.setRootView(controller)
+    }
 
 }

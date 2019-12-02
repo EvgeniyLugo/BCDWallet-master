@@ -30,23 +30,23 @@ import Foundation
 ///Coin type
 public enum Coin: Int, CaseIterable {
     case All
-    case BitCoin
     case Ethereum
-    case Sono
     case Velas
-    
+    case Sono
+    case BitCoin
+
     public var getName: String {
         switch self {
         case .All:
             return "All"
-        case .BitCoin:
-            return "BitCoin"
         case .Ethereum:
             return "Ethereum"
-        case .Sono:
-            return "Sono"
         case .Velas:
             return "Velas"
+        case .Sono:
+            return "Sono"
+        case .BitCoin:
+            return "BitCoin"
         }
     }
     
@@ -54,13 +54,13 @@ public enum Coin: Int, CaseIterable {
         switch self {
         case .All:
             return 5
-        case .BitCoin:
-            return 0
         case .Ethereum:
+            return 0
+        case .Velas:
             return 1
         case .Sono:
             return 2
-        case .Velas:
+        case .BitCoin:
             return 3
         }
     }
@@ -69,14 +69,14 @@ public enum Coin: Int, CaseIterable {
         switch self {
         case .All:
             return "All"
-        case .BitCoin:
-            return "BTC"
         case .Ethereum:
             return "ETH"
-        case .Sono:
-            return "SONO"
         case .Velas:
             return "VLS"
+        case .Sono:
+            return "SONO"
+        case .BitCoin:
+            return "BTC"
         }
     }
         

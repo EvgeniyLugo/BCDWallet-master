@@ -28,10 +28,10 @@ extension TransactionModel {
         //Dest address
         txOuts.append(TxOut(index, Base58.decode(to)?.toHexString() ?? "", amount))
         index += 1
-        let change = totalIn - amount - comission
-        if change > 0 {
+//        let change = totalIn - amount - comission
+        if totalIn - amount > comission {
             //My address
-            txOuts.append(TxOut(index, Base58.decode(fromAddress)?.toHexString() ?? "", change))
+            txOuts.append(TxOut(index, Base58.decode(fromAddress)?.toHexString() ?? "", totalIn - amount - comission))
         }
 
         for previousOutput in unspents {

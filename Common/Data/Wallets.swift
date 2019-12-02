@@ -65,24 +65,20 @@ public class Wallets: NSObject {
         return ws
     }
         
-        public func SaveWallets() -> Void {
-            let walletsString = Utils.convertDictToString(dictionary: self.convertToDictionary())
-    //        #if DEBUG
-            try? walletsString!.write(toFile: Utils.getPathWrite(relative: "bcdcache.txt"), atomically: true, encoding: String.Encoding.utf8)
-    //        let sodium = Sodium()
-    ////        let secretkey = sodium.secretStream.xchacha20poly1305.key()
-    //        let stream_enc = sodium.secretStream.xchacha20poly1305.initPush(secretKey: secretkey)!
-    //        let header = stream_enc.header()
-    ////        [173, 21, 4, 87, 154, 220, 249, 216, 102, 52, 162, 177, 112, 93, 56, 188, 68, 75, 63, 175, 46, 64, 181, 157]
-    //        let userData = userString!.bytes
-    //        let encrypted = stream_enc.push(message: userData)!
-    //        let data = Data(encrypted) as NSData
-    //        let data = Data(userString!.bytes) as NSData
-    //        print(data)
-    //        data.write(toFile: Utils.getPathWrite(relative: "user2.txt"), atomically: true)
-    //
-    //
-    //        #endif
-        }
+    public func SaveWallets() -> Void {
+        let walletsString = Utils.convertDictToString(dictionary: self.convertToDictionary())
+        try? walletsString!.write(toFile: Utils.getPathWrite(relative: "bcdcache.txt"), atomically: true, encoding: String.Encoding.utf8)
+    }
 
+    ///Check for exisitng name
+    /// - Parameter walletName: name for check
+    public func nameExist(walletName: String) -> Bool {
+        for wallet in wallets {
+            if wallet.walletName == walletName {
+                return true
+            }
+        }
+        
+        return false
+    }
 }

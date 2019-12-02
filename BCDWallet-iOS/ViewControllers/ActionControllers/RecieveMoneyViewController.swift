@@ -9,6 +9,9 @@
 import UIKit
 
 class RecieveMoneyViewController: UIViewController {
+    
+    ///Controller to return
+    var controller: UIViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()

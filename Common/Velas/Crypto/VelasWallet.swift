@@ -9,7 +9,7 @@
 import Foundation
 import CryptoSwift
 
-public struct Wallet {
+public struct VelasWallet {
     private let _version: [UInt8] = [15, 244]
     private let addressCheckSumLen: Int = 4
     

@@ -14,6 +14,7 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var growImage: UIImageView!
+    @IBOutlet weak var progressView: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,14 +28,22 @@ class MainTableViewCell: UITableViewCell {
     }
 
     func setParameters(wallet: WalletData, cross: Float = 0, grow: Bool = true) {
-        let coinText = wallet.currency.getShortName
-        let imgName = wallet.currency.getName.lowercased() + "_logo"
+        let coinText = wallet.coinType.getShortName
+        let imgName = wallet.coinType.getName.lowercased() + "_logo"
         coinImage.image = UIImage(named: imgName)
-        addressLabel.text = wallet.address
+        addressLabel.text = wallet.walletName
+        growImage.image = grow ? UIImage(named: "path_up") : UIImage(named: "path_down")
+
         let amount = wallet.amount == "" ? "0" : wallet.amount
         amountLabel.text = "\(amount) \(coinText)"
-        let usd = Float(wallet.amount)! * cross
+        let usd = Float(amount)! * cross
         totalAmountLabel.text = "$ \(usd)"
-        growImage.image = grow ? UIImage(named: "path_up") : UIImage(named: "path_down")
+    }
+    
+    func refreshAmount(wallet: WalletData, cross: Float = 0) {
+        let amount = wallet.amount == "" ? "0" : wallet.amount
+        amountLabel.text = "\(amount) \(wallet.coinType.getShortName)"
+        let usd = Float(amount)! * cross
+        totalAmountLabel.text = "$ \(usd)"
     }
 }

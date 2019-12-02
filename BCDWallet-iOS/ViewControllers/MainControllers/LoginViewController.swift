@@ -30,11 +30,11 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         do {
-          let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName,
-                                                  account: "WalletAccount",
-                                                  accessGroup: KeychainConfiguration.accessGroup)
-          let keychainPassword = try passwordItem.readPassword()
-          checkedPassword = keychainPassword
+            let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName,
+                                                    account: "WalletAccount",
+                                                    accessGroup: KeychainConfiguration.accessGroup)
+            let keychainPassword = try passwordItem.readPassword()
+            checkedPassword = keychainPassword
         }
         catch {
           checkedPassword = ""
@@ -62,7 +62,9 @@ class LoginViewController: UIViewController {
     private func openWallet(_ deadLine: TimeInterval = 0.0) {
         DispatchQueue.main.asyncAfter(deadline: .now() + deadLine) {
             if self.appDelegate.coordinator.wallets.wallets.count > 0 {
-                UIApplication.setRootView(MainViewController.instantiate(from: .Main))
+                let mc = MainViewController.instantiate(from: .Main)
+//                mc.needCheckBalance = true
+                UIApplication.setRootView(mc)
             }
             else {
                 UIApplication.setRootView(WelcomeViewController.instantiate(from: .Main))

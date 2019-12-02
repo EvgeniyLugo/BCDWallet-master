@@ -120,12 +120,21 @@ extension WelcomeViewController {
     }
     
     @IBAction func restorePressed(sender: UIButton) {
+        let vc = RestoreViewController.instantiate(from: .Actions)
+        vc.controller = self
+        UIApplication.setRootView(vc)
     }
     
     @IBAction func createPressed(sender: UIButton) {
+        let vc = CreatePasswordViewController.instantiate(from: .Actions)
+        vc.controller = self
+        UIApplication.setRootView(vc)
     }
     
     @IBAction func importPressed(sender: UIButton) {
+        let vc = ImportViewController.instantiate(from: .Actions)
+        vc.controller = self
+        UIApplication.setRootView(vc)
     }
 
 }
